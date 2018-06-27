@@ -1,0 +1,305 @@
+/* RESET CSS*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+  background: url('bg.jpg') top left;
+  background-size: cover;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+h1 {
+  font-size: 2.5rem;
+}
+p {
+  line-height: 25px;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+/*MAIN STYLESHEET*/
+.App {
+  margin:3% auto 3%;
+  max-width: 1000px;
+  height: auto;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/*HEADER*/
+header {
+  margin: 0 0 40px;
+}
+
+header .navlink-active {
+  color:#ff722e;
+}
+
+header ul {
+  margin: 0;
+}
+
+header ul li {
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+
+header ul li a {
+  display: block;
+  padding: .5rem 1rem;
+  position: relative;
+  color: #7f7f7f;
+  font-size: 25px;
+  transition: all 0.2s ease-in-out 0s;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -o-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+}
+
+header ul li a:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+  width: 0;
+  height: 1px;
+  background-color: #ff722e;
+  transition: all 0.2s ease-in-out 0s;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -o-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+}  
+
+header ul li:hover a {
+  color: #ff722e;
+}
+
+header ul li:hover a:before {
+  width: 100%;
+} 
+
+header .fa-bookmark {
+  position: relative;
+}
+
+header .bookmarkQty {
+  position: absolute;
+  top: -12px;
+  right: -17px;
+  font-size: 13px;
+  color: #ff722e;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 50%;
+}
+/*MAIN*/
+.breadcrumbs {
+  min-height: 100px;
+  text-align: center;
+}
+.breadcrumbs .title {
+  line-height: 100px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.component-wrapper .block-content {
+  background-color: #ffffff;
+  min-height: 270px;
+}
+.component-wrapper .block-content .page-section-wrap {
+  position: relative;
+}  
+.component-wrapper .img-wrapper {
+  text-align: center;
+}
+
+.component-wrapper table {
+  margin: 0;
+}
+/*MAIN-SEARCH*/
+.search-content {
+  background-color: #ffffff;
+  text-align: center;
+}
+.search-content .searchbox {
+  margin: 0px auto;
+  padding: 20px 60px;
+}
+.search-content .searchbox input {
+  width: 100%;
+  height: 50px;
+  color: rgb(227, 75, 77);
+  border: none;
+  border-bottom: 1px solid rgb(227, 75, 77);
+  outline: none;
+  font-size: 25px;
+}
+.search-content .searchbox input::placeholder {
+  color: rgb(227, 75, 77);
+}
+.search-content .totalresults {
+  padding-top:20px;
+  color: rgb(227, 75, 77);
+}
+.search-content .page-section-wrap {
+  position: relative;
+}
+.search-content .loading-icon-wrap {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  background-color:white;
+  opacity:0.7;
+  z-index: 1;
+}
+.search-content .loading-icon-wrap img {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+.search-content .movie-content-wrap {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+@media screen and (min-width:991px) {
+.search-content .movie-content-wrap .poster {
+    border-right: 1px dashed black;
+}
+}
+.search-content .movie-content-wrap .movie-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.search-content .movie-content-wrap .btn-moviedetail {
+    background-color: rgb(227, 75, 77);
+    color: #ffffff;
+    border: 1px solid rgb(227, 75, 77);
+    display: inline-block;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 20px;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    
+}
+.search-content .movie-content-wrap .btn-moviedetail:hover {
+    color: rgb(227, 75, 77);  
+    background-color: #ffffff;
+}
+/*MAIN-DETAIL*/
+.detail-content {
+  position: relative;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.detail-content .bookmark-wrapper {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+}
+.detail-content .bookmark-wrapper .red {
+  color: #ff4141d4;
+}
+.detail-content .bookmark-wrapper .green {
+  color: #03e435d4;
+}
+.detail-content .poster {
+  margin-bottom: 10px;
+}
+/*MAIN-BOOKMARK*/
+.bookmark-content {
+  padding: 20px;
+}
+.bookmark-content h1 {
+  text-align: center;
+}
+.bookmark-content .link-bookmarked-wrap {
+  margin: 20px 0px;
+  text-align: center;
+}
+.bookmark-content .link-bookmarked {
+  text-decoration: none;
+  display: inline-block;
+}
+.bookmark-content .no-bookmark {
+  text-align:center;
+  margin-top: 20px;
+}

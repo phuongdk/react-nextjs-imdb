@@ -1,48 +1,38 @@
-import Layout from '../components/Layout.js'
-import Link from 'next/link'
-import axios from 'axios'
-import fetch from 'isomorphic-unfetch'
+import { Component } from 'react'
+import config from '../libs/config'
+import Breadcrumbs from '../components/breadcrumbs'
+import Layout from '../components/layout.js'
 
-const PostLink = (props) => (
-  <li>
-    <Link as={`/p/${props.id}`} href={`/post?title=${props.title}`}>
-      <a>{props.title}</a>
-    </Link>
-  </li>
-)
-
-const Index = (props) => (
-  <Layout>
-    <h1>Blog Posts</h1>
-    <ul>
-      <PostLink id="1" title="Post1" />
-      <PostLink id="2" title="Post2" />
-      <PostLink id="3" title="Post3" />
-    </ul>
-    <ul>
-    {
-      props.shows &&
-      props.shows.map(({show}) => (
-        <li key={show.id}>
-          <div><img src={show.image.medium} alt={show.name} /></div>
-          <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-            <a>{show.name}</a>
-          </Link>
-        </li>
-      ))
-    }
-    </ul>
-    {console.log(props.shows)}
-  </Layout>
-)
-
-Index.getInitialProps = async function() {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=Avenger')
-  const data = await res.json()
-
-  return {
-    shows: data  || null
+class Index extends Component {
+  render () {
+    const { page: { home: { appName, description, copyright } } } = config
+    return (
+      <Layout>
+        <div className='home-wrapper component-wrapper'>
+          <Breadcrumbs home={config.page.home} />
+          <div className='home-content block-content'>
+            <div className='page-section-wrap'>
+              <table className='table table-bordered table-hover'>
+                <tbody>
+                  <tr>
+                    <td className='infor'>Application Name</td>
+                    <td className='content'>{appName}</td>
+                  </tr>
+                  <tr>
+                    <td className='infor'>Description</td>
+                    <td className='content'>{description}</td>
+                  </tr>
+                  <tr>
+                    <td className='infor'>Copyright</td>
+                    <td className='content'>{copyright}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
   }
 }
-
 export default Index
