@@ -3,13 +3,13 @@ import fetch from 'isomorphic-unfetch'
 import Layout from '../components/layout.js'
 import Breadcrumbs from '../components/breadcrumbs'
 import config from '../libs/config'
+import { queryMovieDetail } from '../queries'
 
 class Detail extends Component {
   constructor (props) {
     super(props)
     this.state = {
       bookmark: false,
-      movie: null,
       message: null
     }
     this.handleBookMark = this.handleBookMark.bind(this)
@@ -17,14 +17,27 @@ class Detail extends Component {
 
   componentDidMount () {
     this.checkBookMark()
-    this.setState({shouldUpdate: true})
   }
 
   static async getInitialProps (context) {
     const { id } = context.query
-    const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
-    const show = await res.json()
-    return { show, id }
+    try {
+      const fetchData = await fetch(config.graphqlEndPoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: queryMovieDetail,
+          variables: { id: id }
+        })
+      })
+      const result = await fetchData.json()
+      return {
+        show: result.data.getMovieDetail,
+        id
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   checkBookMark () {
@@ -62,7 +75,10 @@ class Detail extends Component {
                 show &&
                   <div className='movie-content-wrap'>
                     <div className='poster'>
-                      <img src={show.image.original} alt='Poster' />
+                      {
+                        show.image && show.image.original &&
+                        <img src={show.image.original} alt='Poster' />
+                      }
                     </div>
                     <div>
                       <p>{show.name}</p>
@@ -70,7 +86,7 @@ class Detail extends Component {
                       <p>Movie Type: {`${show.genres}`}</p>
                       <p>Movie Status: {show.status}</p>
                       <p>Language: {show.language}</p>
-                      <p>Plot: {show.summary.replace(/(<[/]?p>)|(<[/]?b>)/g, '')}</p>
+                      <p>Plot: {show.summary.replace(/(<[/]?p>)|(<[/]?b>)|(<[/]?i>)|(&amp;)/g, '')}</p>
                       <p>Rating: {show.rating.average ? show.rating.average : 'none'}</p>
                     </div>
                   </div>

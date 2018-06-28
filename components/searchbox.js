@@ -10,7 +10,7 @@ class Searchbox extends Component {
   }
 
   render () {
-    const search = this.props.value
+    const { search } = this.props
     return (
       <div className='searchbox'>
         <input type='text' name='search' placeholder='Search by movie name...' onChange={this.handleSearch} value={search} />

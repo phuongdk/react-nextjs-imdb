@@ -1,7 +1,9 @@
 const config = {
+  graphqlEndPoint: 'http://localhost:3000/graphql',
+  tvMazeSearchApiEndpoint: 'https://api.tvmaze.com/search/shows?q=',
   apiKey: '5f404258',
-  defaultMovies: 'Avengers',
-  fetchError: 'Error fetching data, please check your network again',
+  defaultMovies: 'Blood',
+  fetchError: 'Error fetching data!',
   page: {
     home: {
       title: 'home',
@@ -16,6 +18,7 @@ const config = {
       color: '#ffffff',
       bgcolor: '#E34B4D',
       keyWordLengthMessage: 'Please enter at least three characters without whitespaces',
+      noMovies: 'There are no movies',
       loadmoreSuccess: 'Loading...',
       loadmoreError: 'Cannot load any movies'
     },
